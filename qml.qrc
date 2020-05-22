@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>Login.qml</file>
+        <file>UrenRegistreren.qml</file>
+        <file>GewerkteUren.qml</file>
+        <file>GewerkteUrenList.qml</file>
+    </qresource>
+</RCC>

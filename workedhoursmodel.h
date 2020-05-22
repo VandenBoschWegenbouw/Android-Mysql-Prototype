@@ -1,0 +1,44 @@
+#ifndef WORKEDHOURSMODEL_H
+#define WORKEDHOURSMODEL_H
+
+#include <QAbstractListModel>
+
+class WorkedHoursList;
+
+class WorkedHoursModel : public QAbstractListModel
+{
+    Q_OBJECT
+    Q_PROPERTY(WorkedHoursList *list READ list WRITE setList)
+
+public:
+    explicit WorkedHoursModel(QObject *parent = nullptr);
+
+    enum {
+        CompanyRole,
+        ProjectRole,
+        HoursRole
+    };
+
+    // Basic functionality:
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
+    // Editable:
+    bool setData(const QModelIndex &index, const QVariant &value,
+                 int role = Qt::EditRole) override;
+
+    Qt::ItemFlags flags(const QModelIndex& index) const override;
+
+    virtual QHash<int, QByteArray> roleNames() const override;
+
+    WorkedHoursList *list() const;
+    void setList(WorkedHoursList *list);
+
+private:
+    WorkedHoursList *mList;
+};
+
+#endif // WORKEDHOURSMODEL_H
+
+
